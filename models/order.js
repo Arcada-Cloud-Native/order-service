@@ -7,6 +7,7 @@ const validateEmail = function(email) {
 
 const orderSchema = mongoose.Schema({
   _id: mongoose.Types.ObjectId,
+  invoiceId: { type: Number },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: {
@@ -32,7 +33,8 @@ const orderSchema = mongoose.Schema({
   productName: { type: String, required: true },
   productSize: { type: Number, required: true },
   productColor: { type: String, required: true },
-  productPrice: { type: Number, required: true }
+  productPrice: { type: Number, required: true },
+  tracking: { type: String }
 });
 
 module.exports = mongoose.model("Order", orderSchema);
