@@ -30,19 +30,25 @@ router.get("/:id", (req, res, next) => {
 //eventlistener for POST requests
 router.post("/", (req, res, next) => {
   const {
-    firstName,
+    userId,
+    /*firstName,
     lastName,
     email,
     address,
     town,
     state,
     phoneNumber,
-    zipCode,
+    zipCode,*/
     productName,
     productSize,
     productColor,
     productPrice
   } = req.body;
+
+  // få ut info om användaren baserat på userId som fås 
+  // i post req från frontend med userId och produktinfo för beställningen
+  const userInfo = requestUserData(userId)
+  const {firstName, lastName, email, address, town, state, phoneNumber, zipCode} = userInfo
 
   const order = new Order({
     _id: new mongoose.Types.ObjectId(),

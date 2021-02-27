@@ -1,7 +1,4 @@
 const shippingRequest = order => {
-    console.log("SHIPPING REQUEST")
-    console.log(order.firstName)
-
     const shippingReq = {
         "orderId": order._id,
         "firstName": order.firstName,
