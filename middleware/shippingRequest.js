@@ -13,9 +13,26 @@ const shippingRequest = order => {
         "shipping": "Posti"
     }
 
-    //TODO: 
+    //TODO:
     // Skicka shippingReq-objektet till shipping API i POST req
 
+function SendRequest(shippingReq) {
+    function OnResponse(response) {
+        var data = '';
+
+          response.on('data', function(chunk) {
+              data += chunk; //Append each chunk of data received to this variable.
+          });
+          response.on('end', function() {
+              console.log(data); //Display the server's response, if any.
+          });
+    }
+
+      var request = http.request(urlparams, OnResponse); //Create a request object.
+
+      request.write(shippingReq); //Send off the request.
+      request.end(); //End the request.
+    }
     /*
     var urlparams = {
         host: 'plop.requestcatcher.com', //No need to include 'http://' or 'www.'
@@ -23,7 +40,7 @@ const shippingRequest = order => {
         path: '/test',
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json', //Specifying to the server that we are sending JSON 
+            'Content-Type': 'application/json', //Specifying to the server that we are sending JSON
         }
     };
     */
