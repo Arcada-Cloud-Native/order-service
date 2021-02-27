@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const Order = require("../models/order");
 const handleError = require("../middleware/handleError");
+const shippingRequest = require("../middleware/shippingRequest")
 
 //eventlistener for GET requests
 router.get("/", (req, res, next) => {
@@ -68,6 +69,14 @@ router.post("/", (req, res, next) => {
         message: "Order successfully created!",
         order: order
       });
+      /*
+        SKICKAR REQUESTS TILL SHIPPING OCH INVOICING API MED 
+        INKOMMANDE POST REQUESTS (ORDERS)
+      */
+      shippingRequest(result)
+      invoicingRequest(result)
+      // decreaseStockCount(result)  
+
     })
     .catch(error => handleError(error));
 });
