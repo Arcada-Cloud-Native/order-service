@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const Order = require("../models/order");
 const handleError = require("../middleware/handleError");
-const shippingRequest = require("../middleware/shippingRequest")
+const shippingRequest = require("../middleware/shippingRequest");
+const requestUserData = require("../middleware/requestUserData");
 
 //eventlistener for GET requests
 router.get("/", (req, res, next) => {
@@ -42,7 +43,8 @@ router.post("/", (req, res, next) => {
     productName,
     productSize,
     productColor,
-    productPrice
+    productPrice,
+    shipping
   } = req.body;
 
   // få ut info om användaren baserat på userId som fås 
@@ -64,7 +66,8 @@ router.post("/", (req, res, next) => {
     productName,
     productSize,
     productColor,
-    productPrice
+    productPrice,
+    shipping
   });
 
   order
