@@ -52,18 +52,18 @@ router.post("/", (req, res, next) => {
 
   // få ut info om användaren baserat på userId som fås 
   // i post req från frontend med userId och produktinfo för beställningen
+  const time = new Date();
   const userInfo = requestUserData(userId)
-  const {firstName, lastName, email, address, town, state, phoneNumber, zipCode} = userInfo
-
+  const {firstName, lastName, email, address, town, state, phoneNumber, zipCode} = userInfo 
   const order = new Order({
-    _id: new mongoose.Types.ObjectId(),
+    _id: time.getTime(),
     firstName,
     lastName,
     email,
     address,
     town,
     state,
-    date: new Date(),
+    date: time,
     phoneNumber,
     zipCode,
     productId,

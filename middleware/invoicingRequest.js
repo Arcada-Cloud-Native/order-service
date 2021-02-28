@@ -9,20 +9,20 @@ const invoicingRequest = order => {
         method: 'POST',
         uri: 'https://ea42luoqrb.execute-api.eu-west-1.amazonaws.com/v1/invoices',
         body: {
-            firstName: "John",
-            lastName: "Smith",
-            orderId: 5,
-            address: "Aleksanterinkatu 11",
-            email: "john@example.com",
-            town: "Helsinki",
-            state: "Uusimaa",
-            date: "2021-07-21T17:32:28Z",
-            phoneNumber: "+358 40 5723315",
-            zipCode: "00100",
+            firstName: order.firstName,
+            lastName: order.lastName,
+            orderId: order._id,
+            address: order.address,
+            email: order.email,
+            town: order.town,
+            state: order.state,
+            date: order.date,
+            phoneNumber: order.phoneNumber,
+            zipCode: order.zipCode,
             item: {
-                quantity: 2,
-                item: "Big Bean Burrito",
-                price: 30.05
+                quantity: order.productQuantity,
+                item: order.productName,
+                price: order.productPrice
                 }
         },
         json: true // Automatically stringifies the body to JSON

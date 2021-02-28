@@ -4,7 +4,7 @@ const requestUserData = userId => {
     // info om användaren med det här ID
     let firstName = "first"; 
     let lastName = "last";
-    let email = "email@email.com"; 
+    let email = "email2@email.com"; 
     let address = "streer";
     let town = "town"; 
     let state = "state";
