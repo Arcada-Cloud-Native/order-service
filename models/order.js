@@ -30,11 +30,14 @@ const orderSchema = mongoose.Schema({
   zipCode: { type: Number, required: true },
 
   // PRODUCT
+  productId: {type:String, required: true},
   productName: { type: String, required: true },
   productSize: { type: Number, required: true },
   productColor: { type: String, required: true },
   productPrice: { type: Number, required: true },
-  tracking: { type: String }
+
+  //SHIPPING
+  shipping: {type: String, required: true, enum: ["DHL", "Posti", "UPS", "PostNord", "DPD", "TNT", "Bring", "Matkahuolto", "BudBee"]}
 });
 
 module.exports = mongoose.model("Order", orderSchema);
