@@ -5,6 +5,7 @@ const Order = require("../models/order");
 const handleError = require("../middleware/handleError");
 const shippingRequest = require("../middleware/shippingRequest");
 const requestUserData = require("../middleware/requestUserData");
+const invoicingRequest = require("../middleware/invoicingRequest");
 
 //eventlistener for GET requests
 router.get("/", (req, res, next) => {
@@ -40,10 +41,12 @@ router.post("/", (req, res, next) => {
     state,
     phoneNumber,
     zipCode,*/
+    productId,
     productName,
     productSize,
     productColor,
     productPrice,
+    productQuantity,
     shipping
   } = req.body;
 
@@ -63,10 +66,12 @@ router.post("/", (req, res, next) => {
     date: new Date(),
     phoneNumber,
     zipCode,
+    productId,
     productName,
     productSize,
     productColor,
     productPrice,
+    productQuantity,
     shipping
   });
 
