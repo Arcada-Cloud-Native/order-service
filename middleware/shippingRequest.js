@@ -13,37 +13,41 @@ const shippingRequest = order => {
         "shipping": "Posti"
     }
 
-    //TODO:
-    // Skicka shippingReq-objektet till shipping API i POST req
+    const rp = require('request-promise');
+    //TODO: 
+    // floats like 1.00 becomes 1
+    const data = JSON.stringify({
+        todo: 'Buy the milk'
+      })
+    var options = {
+        method: 'POST',
+        uri: 'https://beansshipping.herokuapp.com/orders',
+        body: {
+            orderId: order._id,
+            firstName: order.firstName,
+            lastName: order.lastName,
+            address: order.address,
+            email: order.email,
+            town: order.town,
+            state: order.state,
+            date: order.date,
+            phoneNumber: order.phoneNumber,
+            zipCode: order.zipCode,
+            shipping: order.shipping
+        },
+        json: true // Automatically stringifies the body to JSON
+        
+    };
+    console.log(options.body)
+    rp(options)
+        .then(function (parsedBody) {
+            // POST succeeded...
+        })
+        .catch(function (err) {
+            // POST failed...
+            console.error(err)
+        });
 
-    function SendRequest(shippingReq) {
-        function OnResponse(response) {
-            var data = '';
-
-            response.on('data', function(chunk) {
-                data += chunk; //Append each chunk of data received to this variable.
-            });
-            response.on('end', function() {
-                console.log(data); //Display the server's response, if any.
-            });
-        }
-
-        var request = http.request(urlparams, OnResponse); //Create a request object.
-
-        request.write(shippingReq); //Send off the request.
-        request.end(); //End the request.
-        }
-        /*
-        var urlparams = {
-            host: 'plop.requestcatcher.com', //No need to include 'http://' or 'www.'
-            port: 80,
-            path: '/test',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json', //Specifying to the server that we are sending JSON
-            }
-        };
-        */
 }
 
 module.exports = shippingRequest;
