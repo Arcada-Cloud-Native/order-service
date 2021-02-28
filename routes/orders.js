@@ -6,6 +6,7 @@ const handleError = require("../middleware/handleError");
 const shippingRequest = require("../middleware/shippingRequest");
 const requestUserData = require("../middleware/requestUserData");
 const invoicingRequest = require("../middleware/invoicingRequest");
+const decreaseStockCount = require("../middleware/decreaseStockCount");
 
 //eventlistener for GET requests
 router.get("/", (req, res, next) => {
@@ -89,7 +90,7 @@ router.post("/", (req, res, next) => {
       */
       shippingRequest(result)
       invoicingRequest(result)
-      // decreaseStockCount(result)  
+      decreaseStockCount(result)  
 
     })
     .catch(error => handleError(error));

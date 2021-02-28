@@ -1,28 +1,30 @@
-const decreaseStockCount = result => {
-    const shippingReq = {
-        "productId": order.productId,
+const decreaseStockCount = order => {
+
+    const rp = require('request-promise');
+    //TODO: 
+    // warehouse måst ännu fixas
+    var url = 'https://inventoryapi.azurewebsites.net/warehouse/1/'+ order.productId;
+    console.log(url);
+    var options = {
+        method: 'PATCH',
+        uri: url,
+        body: {
+            amount: order.productQuantity
+        },
         
+        json: true // Automatically stringifies the body to JSON
         
-    }
-    // TODO
-    // Skicka post req till product och minska stock för produkten i ordern med x
-    function OnResponse(response) {
-        var data = '';
-
-          response.on('data', function(chunk) {
-              data += chunk; //Append each chunk of data received to this variable.
-          });
-          response.on('end', function() {
-              console.log(data); //Display the server's response, if any.
-          });
-    }
-
-      var request = http.request(urlparams, OnResponse); //Create a request object.
-
-      request.write(shippingReq); //Send off the request.
-      request.end(); //End the request.
+    };
+    console.log(options.body)
+    rp(options)
+        .then(function (parsedBody) {
+            // POST succeeded...
+        })
+        .catch(function (err) {
+            // POST failed...
+            console.error(err)
+        });
+        console.log("SHIT" + url);
     
-
 }
-
 module.exports = decreaseStockCount;

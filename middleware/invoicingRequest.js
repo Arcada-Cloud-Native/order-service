@@ -2,9 +2,7 @@ const invoicingRequest = order => {
     const rp = require('request-promise');
     //TODO: 
     // floats like 1.00 becomes 1
-    const data = JSON.stringify({
-        todo: 'Buy the milk'
-      })
+    
     var options = {
         method: 'POST',
         uri: 'https://ea42luoqrb.execute-api.eu-west-1.amazonaws.com/v1/invoices',
