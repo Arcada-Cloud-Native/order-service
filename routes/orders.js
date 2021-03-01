@@ -68,7 +68,18 @@ router.post("/", async (req, res, next) => {
   // få ut info om användaren baserat på userId som fås 
   // i post req från frontend med userId och produktinfo för beställningen
   const time = new Date();
-  const userInfo = await requestUserData(userId)
+  
+  const userInfo = {   //await requestUserData(userId)
+    firstName: "Test",
+    lastName: "Man",
+    address: "Test avenue 31",
+    email: "testman@test.com",
+    town: "testville",
+    state: "state of test",
+    date: "2020-01-25",
+    phoneNumber: "+369 123 5346",
+    zipCode: 13269
+  } 
   
   console.log("USERINFO");
   console.log(userInfo);
@@ -97,7 +108,6 @@ router.post("/", async (req, res, next) => {
     shipping
   });
 
-  console.log("all is well hittills");
   order
     .save()
     .then(result => {
