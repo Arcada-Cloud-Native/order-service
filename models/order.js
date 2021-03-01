@@ -7,7 +7,7 @@ const validateEmail = function(email) {
 
 const orderSchema = mongoose.Schema({
   _id: {type: Number},
-  invoiceId: { type: Number },
+  user_id: {type: String, required: true},
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: {
@@ -36,7 +36,8 @@ const orderSchema = mongoose.Schema({
   productColor: { type: String, required: true },
   productQuantity: { type: Number, required: true },
   productPrice: { type: Number, required: true },
-
+  //INVOICE
+  invoiceId: { type: Number },
   //SHIPPING
   shipping: {type: String, required: true, enum: ["DHL", "Posti", "UPS", "PostNord", "DPD", "TNT", "Bring", "Matkahuolto", "BudBee"]}
 });

@@ -29,6 +29,27 @@ router.get("/:id", (req, res, next) => {
     })
     .catch(error => handleError(error));
 });
+router.get("/user/:user_id", (req, res, next) => {
+  const id = req.params.user_id;
+
+  Order.find({user_id: id})
+    .exec()
+    .then(document => {
+      res.status(200).json(document);
+    })
+    .catch(error => handleError(error));
+});
+router.get("/user/:user_id/:id", (req, res, next) => {
+  const id = req.params.id;
+  const user_id = req.params.user_id;
+
+  Order.find({_id: id, user_id: user_id})
+    .exec()
+    .then(document => {
+      res.status(200).json(document);
+    })
+    .catch(error => handleError(error));
+});
 
 //eventlistener for POST requests
 router.post("/", (req, res, next) => {
@@ -55,9 +76,10 @@ router.post("/", (req, res, next) => {
   // i post req från frontend med userId och produktinfo för beställningen
   const time = new Date();
   const userInfo = requestUserData(userId)
-  const {firstName, lastName, email, address, town, state, phoneNumber, zipCode} = userInfo 
+  const {user_id, firstName, lastName, email, address, town, state, phoneNumber, zipCode} = userInfo 
   const order = new Order({
     _id: time.getTime(),
+    user_id,
     firstName,
     lastName,
     email,
