@@ -7,7 +7,7 @@ const validateEmail = function(email) {
 
 const orderSchema = mongoose.Schema({
   _id: {type: Number},
-  user_id: {type: String, required: true},
+  userId: {type: String, required: true},
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: {

@@ -52,17 +52,9 @@ router.get("/user/:user_id/:id", (req, res, next) => {
 });
 
 //eventlistener for POST requests
-router.post("/", (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const {
     userId,
-    /*firstName,
-    lastName,
-    email,
-    address,
-    town,
-    state,
-    phoneNumber,
-    zipCode,*/
     productId,
     productName,
     productSize,
@@ -75,11 +67,16 @@ router.post("/", (req, res, next) => {
   // få ut info om användaren baserat på userId som fås 
   // i post req från frontend med userId och produktinfo för beställningen
   const time = new Date();
-  const userInfo = requestUserData(userId)
-  const {user_id, firstName, lastName, email, address, town, state, phoneNumber, zipCode} = userInfo 
+  const userInfo = await requestUserData(userId)
+  
+  console.log("USERINFO");
+  console.log(userInfo);
+  
+  const {firstName, lastName, email, address, town, state, phoneNumber, zipCode} = userInfo 
+
   const order = new Order({
     _id: time.getTime(),
-    user_id,
+    userId,
     firstName,
     lastName,
     email,
@@ -98,6 +95,7 @@ router.post("/", (req, res, next) => {
     shipping
   });
 
+  console.log("all is well hittills");
   order
     .save()
     .then(result => {
