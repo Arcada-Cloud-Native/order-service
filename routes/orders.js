@@ -29,21 +29,21 @@ router.get("/:id", (req, res, next) => {
     })
     .catch(error => handleError(error));
 });
-router.get("/user/:user_id", (req, res, next) => {
-  const id = req.params.user_id;
+router.get("/user/:userId", (req, res, next) => {
+  const id = req.params.userId;
 
-  Order.find({user_id: id})
+  Order.find({userId: id})
     .exec()
     .then(document => {
       res.status(200).json(document);
     })
     .catch(error => handleError(error));
 });
-router.get("/user/:user_id/:id", (req, res, next) => {
+router.get("/user/:userId/:id", (req, res, next) => {
   const id = req.params.id;
-  const user_id = req.params.user_id;
+  const userId = req.params.userId;
 
-  Order.find({_id: id, user_id: user_id})
+  Order.find({_id: id, userId: userId})
     .exec()
     .then(document => {
       res.status(200).json(document);
