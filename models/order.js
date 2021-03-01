@@ -36,6 +36,8 @@ const orderSchema = mongoose.Schema({
   productColor: { type: String, required: true },
   productQuantity: { type: Number, required: true },
   productPrice: { type: Number, required: true },
+  // INVENTORY 
+  warehouse: {type: String, required: true},
   //INVOICE
   invoiceId: { type: Number },
   //SHIPPING

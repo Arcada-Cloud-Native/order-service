@@ -69,6 +69,7 @@ router.post("/", (req, res, next) => {
     productColor,
     productPrice,
     productQuantity,
+    warehouse,
     shipping
   } = req.body;
 
@@ -95,6 +96,7 @@ router.post("/", (req, res, next) => {
     productColor,
     productPrice,
     productQuantity,
+    warehouse,
     shipping
   });
 
