@@ -61,6 +61,7 @@ router.post("/", async (req, res, next) => {
     productColor,
     productPrice,
     productQuantity,
+    warehouse,
     shipping
   } = req.body;
 
@@ -92,6 +93,7 @@ router.post("/", async (req, res, next) => {
     productColor,
     productPrice,
     productQuantity,
+    warehouse,
     shipping
   });
 
