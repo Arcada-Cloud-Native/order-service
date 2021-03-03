@@ -15,15 +15,6 @@ https://beanorder.azurewebsites.net/orders
 	- DELETE - deletes a specific order
 ### POST
 - userId {type: String, required: true},
-- firstName {type: String, required: true},
-- lastName {type: String, required: true},
-- email {type: String, required: true},
-- address {type: String, required: true},
-- town {type: String, required: true},
-- state {type: String, required: true}
-- date {type: Date, require: true}
-- phoneNumber {type: String, required: true}
-- zipCode {type: Number, required: true}
 - productId: {type: String, required: true},
 - productSku: {type: String, required: true},
 - productName: { type: String, required: true }
@@ -46,15 +37,6 @@ content-type: application/json
 
 {
     "userId": "1",
-    "firstName": "Test",
-    "lastName": "Man",
-    "email": "testman@test.com",
-    "address": "Test avenue 31",
-    "town": "testville",
-    "state": "state of test",
-    "date": "2021-03-03T16:37:04.648Z",
-    "phoneNumber": "+369 123 5346",
-    "zipCode": 13269,
     "productId": "603ce74bf5237474e806355",
     "productSku": "bea-55-gre",
     "productName": "hat",
