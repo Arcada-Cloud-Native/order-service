@@ -34,13 +34,10 @@ const orderSchema = mongoose.Schema({
   productSku: {type: String, required: true},
   productName: { type: String, required: true },
   productSize: { type: Number, required: true },
-  productColor: { type: String, required: true },
   productQuantity: { type: Number, required: true },
   productPrice: { type: Number, required: true },
   // INVENTORY 
   warehouse: {type: String, required: true},
-  //INVOICE
-  invoiceId: { type: Number },
   //SHIPPING
   shipping: {type: String, required: true, enum: ["DHL", "Posti", "UPS", "PostNord", "DPD", "TNT", "Bring", "Matkahuolto", "BudBee"]}
 });

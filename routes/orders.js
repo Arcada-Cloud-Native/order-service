@@ -59,7 +59,6 @@ router.post("/", async (req, res, next) => {
     productSku,
     productName,
     productSize,
-    productColor,
     productPrice,
     productQuantity,
     warehouse,
@@ -103,7 +102,6 @@ router.post("/", async (req, res, next) => {
     productSku,
     productName,
     productSize,
-    productColor,
     productPrice,
     productQuantity,
     warehouse,
@@ -149,27 +147,9 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-//eventlistener for PATCH requests
-router.patch("/:id", async (req, res, next) => {
-  const reply = await Order.findById(req.params.id);
-  if (reply.owner != req.user) {
-    res.status(401).json({
-      message: "Authentication failed"
-    });
-  } else {
-    Order.update({ _id: req.params.id }, { $set: req.body })
-      .exec()
-      .then(result => {
-        res.status(200).json({
-          message: "Order updated!"
-        });
-      })
-      .catch(error => handleError(error));
-  }
-});
 
 router.use((req, res, next) => {
-  const error = new Error("Only GET, POST, PATCH, DELETE commands supported");
+  const error = new Error("Only GET, POST, DELETE commands supported");
   error.status = 500;
   next(error);
 });
