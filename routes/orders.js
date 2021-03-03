@@ -56,6 +56,7 @@ router.post("/", async (req, res, next) => {
   const {
     userId,
     productId,
+    productSku,
     productName,
     productSize,
     productColor,
@@ -99,6 +100,7 @@ router.post("/", async (req, res, next) => {
     phoneNumber,
     zipCode,
     productId,
+    productSku,
     productName,
     productSize,
     productColor,

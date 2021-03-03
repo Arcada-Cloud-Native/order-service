@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/1000f7c8-3a21-4093-8251-b208bd767d37/resourceGroups/beanorder/providers/Microsoft.Web/sites/beanorder",
+    "appService.deploySubpath": "."
+}

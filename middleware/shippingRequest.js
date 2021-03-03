@@ -10,7 +10,7 @@ const shippingRequest = order => {
         "date": order.date,
         "phoneNumber": order.phoneNumber,
         "zipCode": order.zipCode,
-        "shipping": "Posti"
+        "shipping": order.shipping
     }
 
     const rp = require('request-promise');

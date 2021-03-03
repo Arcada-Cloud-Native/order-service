@@ -3,13 +3,14 @@ const decreaseStockCount = order => {
     const rp = require('request-promise');
     //TODO: 
 
-    var url = 'https://inventoryapi.azurewebsites.net/warehouse/' + order.warehouse + '/'+ order.productId;
+    var url = 'https://inventoryapi.azurewebsites.net/warehouse/' + order.warehouse + '/'+ order.productSku;
     console.log(url);
     var options = {
         method: 'PATCH',
         uri: url,
         body: {
-            amount: (order.productQuantity * -1)
+            amount: (order.productQuantity * -1),
+            SKU: order.productSku
         },
         
         json: true // Automatically stringifies the body to JSON

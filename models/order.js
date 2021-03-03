@@ -31,6 +31,7 @@ const orderSchema = mongoose.Schema({
 
   // PRODUCT
   productId: {type: String, required: true},
+  productSku: {type: String, required: true},
   productName: { type: String, required: true },
   productSize: { type: Number, required: true },
   productColor: { type: String, required: true },
