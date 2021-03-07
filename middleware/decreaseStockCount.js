@@ -25,7 +25,7 @@ const decreaseStockCount = order => {
             // POST failed...
             console.error(err)
         });
-        console.log("SHIT" + url);
+        
     
 }
 module.exports = decreaseStockCount;
