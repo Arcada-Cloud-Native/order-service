@@ -14,6 +14,7 @@ https://beanorder.azurewebsites.net/orders
 - /orders/:id
 	- DELETE - deletes a specific order
 ### POST
+Use the JSON Web Token from user login as Authorization in header of POST request.
 - userId {type: String, required: true},
 - productId: {type: String, required: true},
 - productSku: {type: String, required: true},
@@ -32,6 +33,9 @@ GET https://beanorder.azurewebsites.net/orders/1614789424648
 ### Create a new invoice
 ```
 POST GET https://beanorder.azurewebsites.net/orders
+headers: {
+      "Authorization": "JSONWebToken"
+    },
 content-type: application/json
 
 
