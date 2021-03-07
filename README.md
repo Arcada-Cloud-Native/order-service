@@ -40,14 +40,15 @@ content-type: application/json
 
 
 {
-    "userId": "1",
-    "productId": "603ce74bf5237474e806355",
-    "productSku": "bea-55-gre",
-    "productName": "hat",
-    "productSize": 10,
-    "productPrice": 10.1,
+    "userId": "6044e754676dce0021522950",
+    "productId": "603ce74bf5237474e8063553",
+    "productSku": "bea-53-red",
+    "productName": "beanie_red",
+    "productSize": 53,
+    "productColor": "red",
+    "productPrice": 20.00,
     "productQuantity": 1,
-    "warehouse": "3",
-    "shipping": "UPS",
+    "warehouse": "1",
+    "shipping": "Posti"
 }
 ```
