@@ -7,6 +7,7 @@ const shippingRequest = require("../middleware/shippingRequest");
 const requestUserData = require("../middleware/requestUserData");
 const invoicingRequest = require("../middleware/invoicingRequest");
 const decreaseStockCount = require("../middleware/decreaseStockCount");
+const jwt = require('jsonwebtoken');
 
 //eventlistener for GET requests
 router.get("/", (req, res, next) => {
@@ -64,22 +65,16 @@ router.post("/", async (req, res, next) => {
     warehouse,
     shipping
   } = req.body;
+  
+  //Jwt
+  const userAuth = req.header('authorization');
+  console.log(userAuth);
 
   // få ut info om användaren baserat på userId som fås 
   // i post req från frontend med userId och produktinfo för beställningen
   const time = new Date();
   
-  const userInfo = {   //await requestUserData(userId)
-    firstName: "Test",
-    lastName: "Man",
-    address: "Test avenue 31",
-    email: "testman@test.com",
-    town: "testville",
-    state: "state of test",
-    date: "2020-01-25",
-    phoneNumber: "+369 123 5346",
-    zipCode: 13269
-  } 
+  const userInfo = await requestUserData(userId, userAuth);
   
   console.log("USERINFO");
   console.log(userInfo);

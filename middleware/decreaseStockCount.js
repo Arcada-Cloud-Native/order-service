@@ -20,6 +20,7 @@ const decreaseStockCount = order => {
     rp(options)
         .then(function (parsedBody) {
             // POST succeeded...
+            
         })
         .catch(function (err) {
             // POST failed...
